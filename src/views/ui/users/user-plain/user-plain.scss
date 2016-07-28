@@ -24,6 +24,7 @@
   cursor: pointer;
 }
 
+// Only show the befriend button when user hovers
 .userPlain_befriendButton {display: none;}
 .userPlain:hover {
   .userPlain_befriendButton {display: inline-block;}

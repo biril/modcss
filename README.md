@@ -31,3 +31,26 @@ source to the state which is relevant to the stage.
     (Depends on [node-sass](https://www.npmjs.com/package/node-sass) and
     [onchange](https://www.npmjs.com/package/onchange). The latter module facilitates the use of
     glob patterns to watch file sets and run commands when anything is added, changed or deleted.)
+
+
+1: PostCSS - Does this thing even work?
+---------------------------------------
+
+Install [postcss](https://www.npmjs.com/package/postcss). Also install
+[postcss-cli](https://www.npmjs.com/package/postcss-cli), the command line for postcss.
+
+Let's create an experimental `css:prefix` task based on
+[autoprefixer](https://www.npmjs.com/package/autoprefixer) (yes, install that too). Take a
+look at [browserslist](https://github.com/ai/browserslist) for a way to configure autoprefixer
+(go ahead and add a browserslist file). Our task should look like:
+
+```json
+{
+  "css:prefix": "postcss -u autoprefixer"
+}
+```
+
+try `npm run css:prefix -- ./src/views/ui/users/user-plain/user-plain.scss`.
+
+(The `--` token allows passing custom arguments to invoked scripts, courtecy of
+[npm's `run-script`](https://docs.npmjs.com/cli/run-script).)
