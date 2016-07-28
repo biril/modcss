@@ -1,17 +1,20 @@
 {
   "name": "modcss",
   "version": "0.0.1",
-  "description": "Modular CSS Playground",
+  "description": "Modular CSS with postCSS and npm scripts",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "ws --port 8888",
     "js:bundle": "r_js -o mainConfigFile=main.js out=bundle.js",
     "css:bundle": "node-sass --source-comments style/style.scss bundle.css",
-    "css:bundle-when-changed": "onchange 'style/**/*.scss' 'src/**/*.scss' -v -- npm run css:bundle"
+    "css:bundle-when-styles-change": "onchange 'style/**/*.scss' 'src/**/*.scss' -v -- npm run css:bundle"
   },
   "keywords": [
-    "css"
+    "css",
+    "postcss",
+    "npm",
+    "tutorial"
   ],
   "author": "biril <alexlambiris@gmail.com>",
   "private": true,
