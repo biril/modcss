@@ -54,3 +54,22 @@ try `npm run css:prefix -- ./src/views/ui/users/user-plain/user-plain.scss`.
 
 (The `--` token allows passing custom arguments to invoked scripts, courtecy of
 [npm's `run-script`](https://docs.npmjs.com/cli/run-script).)
+
+
+2: Modules
+----------
+
+Okay, we're now ready to add a `css:create-module` npm script. Let's install
+[postcss-modules](https://www.npmjs.com/package/postcss-modules) and create a new script based on
+the previous `css:prefix`:
+
+```json
+{
+  "css:create-module": "postcss -u autoprefixer -u postcss-modules"
+}
+```
+
+Using autoprefixer is not really relevant at this point but it's a nice-to-have so let's leave it
+in there. Try out our new script with
+`npm run css:create-module -- ./src/views/ui/users/user-plain/user-plain.scss`. Notice the JSON.
+Cool beans.

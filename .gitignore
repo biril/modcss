@@ -3,3 +3,4 @@ modcss.sublime-workspace
 node_modules/
 bundle.js
 bundle.css
+*.scss.json

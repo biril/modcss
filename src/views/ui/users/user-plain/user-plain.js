@@ -8,11 +8,11 @@ define(function(require) {
   var UserPlainView = Backbone.View.extend({
     className: 'userPlain',
 
-    events: {
-      'click .userPlain_befriendButton': function() {
+    events: _.object([
+      ['click .' + cn.befriendButton, function() {
         this.trigger('befriendUser', this._user.id);
-      }
-    },
+      }]
+    ]),
 
     // Initialized with opts:
     //  * user: A user Model. Must have isFriend = false

@@ -1,22 +1,18 @@
 {
   "name": "modcss",
   "version": "0.0.1",
-  "description": "Modular CSS with postCSS and npm scripts",
+  "description": "Modular CSS Experiment",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "ws --port 8888",
     "js:bundle": "r_js -o mainConfigFile=main.js out=bundle.js",
     "css:bundle": "node-sass --source-comments style/style.scss bundle.css",
-    "css:bundle-when-styles-change": "onchange 'style/**/*.scss' 'src/**/*.scss' -v -- npm run css:bundle",
-    "css:prefix": "postcss -u autoprefixer",
-    "css:create-module": "postcss -u autoprefixer -u postcss-modules"
+    "css:bundle-when-changed": "onchange 'style/**/*.scss' 'src/**/*.scss' -v -- npm run css:bundle",
+    "css:create-module": "postcss -u autoprefixer"
   },
   "keywords": [
-    "css",
-    "postcss",
-    "npm",
-    "tutorial"
+    "css"
   ],
   "author": "biril <alexlambiris@gmail.com>",
   "private": true,
@@ -28,7 +24,6 @@
     "onchange": "^2.5.0",
     "postcss": "^5.1.1",
     "postcss-cli": "^2.5.2",
-    "postcss-modules": "^0.5.0",
     "requirejs": "^2.2.0",
     "requirejs-text": "^2.0.12"
   },
