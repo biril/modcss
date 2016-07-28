@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "ws --port 8888",
-    "js:build": "r_js -o mainConfigFile=src/main.js out=bundle.js"
+    "js:build": "r_js -o mainConfigFile=main.js out=bundle.js"
   },
   "keywords": [
     "css"
@@ -15,12 +15,13 @@
   "private": true,
   "license": "MIT",
   "devDependencies": {
-    "local-web-server": "^1.2.6"
+    "requirejs": "^2.2.0",
+    "local-web-server": "^1.2.6",
+    "requirejs-text": "^2.0.12"
   },
   "dependencies": {
     "backbone": "^1.3.3",
     "jquery": "^3.1.0",
-    "requirejs": "^2.2.0",
     "underscore": "^1.8.3"
   }
 }
