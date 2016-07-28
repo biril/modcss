@@ -5,7 +5,8 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "ws --port 8888"
+    "serve": "ws --port 8888",
+    "js:build": "r_js -o mainConfigFile=src/main.js out=bundle.js"
   },
   "keywords": [
     "css"
