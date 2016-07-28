@@ -11,6 +11,12 @@ define(function (require) {
   // Run the app: Instantiate a UI View with the given set of users and render it
   var runApp = function() {
     var uiView = new UiView({users: users});
+
+    uiView.on('befriendUser', function(userId) {
+      var userToBefriend = users.get(userId);
+      userToBefriend.set({isFriend: true});
+    });
+
     $('.ui').append(uiView.el);
   }
 

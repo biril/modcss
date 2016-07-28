@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "ws --port 8888",
-    "js:build": "r_js -o mainConfigFile=main.js out=bundle.js"
+    "js:bundle": "r_js -o mainConfigFile=main.js out=bundle.js",
+    "css:bundle": "node-sass --source-comments style/style.scss bundle.css",
+    "css:bundle-when-changed": "onchange 'style/**/*.scss' 'src/**/*.scss' -v -- npm run css:bundle"
   },
   "keywords": [
     "css"
@@ -15,8 +17,10 @@
   "private": true,
   "license": "MIT",
   "devDependencies": {
-    "requirejs": "^2.2.0",
     "local-web-server": "^1.2.6",
+    "node-sass": "^3.8.0",
+    "onchange": "^2.5.0",
+    "requirejs": "^2.2.0",
     "requirejs-text": "^2.0.12"
   },
   "dependencies": {

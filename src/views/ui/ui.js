@@ -13,6 +13,7 @@ define(function(require) {
     //  * users: A Collection of users
     initialize: function(opts) {
       this._usersView = new UsersView({users: opts.users});
+      this.listenTo(this._usersView, 'all', this.trigger); // Bubble all events
 
       this.$el.html(tpl());
 
