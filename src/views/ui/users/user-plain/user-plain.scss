@@ -5,15 +5,15 @@
   &:first-child {margin-top: 0;}
 }
 
-.userPlain_name {
+.name {
   display: inline-block;
 }
 
-.userPlain_lastName {
+.lastName {
   opacity: .7;
 }
 
-.userPlain_befriendButton {
+.befriendButton {
   padding: 0 5px;
   margin: 0 5px;
   border-radius: 5px;
@@ -25,7 +25,7 @@
 }
 
 // Only show the befriend button when user hovers
-.userPlain_befriendButton {display: none;}
+.befriendButton {display: none;}
 .userPlain:hover {
-  .userPlain_befriendButton {display: inline-block;}
+  .befriendButton {display: inline-block;}
 }

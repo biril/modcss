@@ -6,16 +6,17 @@ define(function(require) {
   var UserPlainView = require('./user-plain/user-plain');
   var UserFriendView = require('./user-friend/user-friend');
   var tpl = _.template(require('text!./users.html'));
+  var cn = JSON.parse(require('text!./users.scss.json'));
 
   var UsersView = Backbone.View.extend({
-    className: 'users',
+    className: cn.users,
 
     // Initialized with opts:
     //  * users: A Collection of users
     initialize: function(opts) {
       this._users = opts.users;
 
-      this.$el.html(tpl());
+      this.$el.html(tpl({cn: cn}));
 
       this._renderUsers();
       this.listenTo(this._users, 'change', this._renderUsers);
@@ -26,7 +27,7 @@ define(function(require) {
         this.stopListening(userView);
         userView.remove();
       }, this);
-      this.$('.users_list').empty();
+      this.$('.' + cn.list).empty();
     },
 
     _createUserViews: function() {
@@ -41,7 +42,7 @@ define(function(require) {
         this.listenTo(userView, 'all', this.trigger);
       }, this);
       var userViewsElms = _.pluck(this._userViews, 'el');
-      this.$('.users_list').append(userViewsElms);
+      this.$('.' + cn.list).append(userViewsElms);
     },
 
     _renderUsers: function() {

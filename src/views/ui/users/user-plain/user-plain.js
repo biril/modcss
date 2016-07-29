@@ -4,9 +4,10 @@ define(function(require) {
   var _ = require('underscore');
   var Backbone = require('backbone');
   var tpl = _.template(require('text!./user-plain.html'));
+  var cn = JSON.parse(require('text!./user-plain.scss.json'));
 
   var UserPlainView = Backbone.View.extend({
-    className: 'userPlain',
+    className: cn.userPlain,
 
     events: _.object([
       ['click .' + cn.befriendButton, function() {
@@ -23,7 +24,7 @@ define(function(require) {
         throw new Error('UserPlainView can only be instantiated with user Model that is not a friend');
       }
 
-      this.$el.html(tpl(this._user.attributes));
+      this.$el.html(tpl({cn: cn, user: this._user.attributes}));
     }
   });
 

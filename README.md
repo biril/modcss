@@ -56,8 +56,8 @@ try `npm run css:prefix -- ./src/views/ui/users/user-plain/user-plain.scss`.
 [npm's `run-script`](https://docs.npmjs.com/cli/run-script).)
 
 
-2: Modules
-----------
+2: Enter the CSS module
+-----------------------
 
 Okay, we're now ready to add a `css:create-module` npm script. Let's install
 [postcss-modules](https://www.npmjs.com/package/postcss-modules) and create a new script based on
@@ -71,5 +71,28 @@ the previous `css:prefix`:
 
 Using autoprefixer is not really relevant at this point but it's a nice-to-have so let's leave it
 in there. Try out our new script with
-`npm run css:create-module -- ./src/views/ui/users/user-plain/user-plain.scss`. Notice the JSON.
-Cool beans.
+`npm run css:create-module -- ./src/views/ui/users/user-plain/user-plain.scss`. Notice the
+generated `.scss.json`. Revel in its glory.
+
+We now have a method of uniquefying the class names per module without having to manually prefix
+them. Let's pick a module and remove all prefixes, applying our `create-module` task and making use
+of the generated JSON files to get the unique class names into our templates.
+
+We'll have to run `css:create-module` task with the `-o` switch to generate a `scss.module` file:
+
+```bash
+npm run css:create-module -- -o ./src/views/.../foo.scss.module ./src/views/.../foo.scss
+```
+
+Having generated the `.scss.module` file we'll have to `@import` it in `styles/modules.scss` in
+place of the original `.scss` file: It is the `.scss.module` file that contains the uniquefied
+class names that we want in our stylesheets. On the JS side, we'll have to swap direct references to
+class names for references to attributes in the generated `.scss.json` file. Something along the
+lines of:
+
+```javascript
+var classNames = JSON.parse(require('./foo.scss.json'));
+
+// .. and then, further down
+$(classNames.title).text('War and Peace'); // Instead of $('.title').text('War and Peace')
+```
