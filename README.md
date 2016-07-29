@@ -96,3 +96,54 @@ var classNames = JSON.parse(require('./foo.scss.json'));
 // .. and then, further down
 $(classNames.title).text('War and Peace'); // Instead of $('.title').text('War and Peace')
 ```
+
+
+3: Useful scripts
+-----------------
+
+We can go over each and every one of our defined modules applying step 2. We will _have to_, given
+that we need to change all our scripts to make use of generated JSON files when referencing class
+names. However, we naturally want to automate the creation of CSS-modules. So here's the scripts that
+we'll be using:
+
+#### `css:create-module`
+
+We already have that. We can run it as described in step 2 above to generate the `scss.module` and
+`scss.json` files per module. (Remember to run `css:bundle` afterwards, in order to get the updated
+styles into `bundle.css`.)
+
+#### `css:create-modules`
+
+Notice the `s` at the end. This is a script to go over _all_ defined modules in our code and run
+`css:create-module` on them. This is a necessity as we don't want to be manually iterating our
+codebase looking for modules and re-running `css:create-module` all the time. A user checking out
+our repo will start out without any `scss.module` or `scss.json` files (these are _generated_ and
+as such _not versioned_). To generate _all_ of them it should be enough to run this script. The
+implementation will be based on [bash find](http://linux.die.net/man/1/find):
+
+```json
+{
+  "css:create-modules":
+    "find ./src -iname '*.scss' -exec npm run css:create-module -- -o '{}.module' '{}' \\;"
+}
+```
+
+(The `{}` token is the path of the found file, available courtecy of `find`.)
+
+#### `css:create-module-when-styles-change`
+
+Watch `.scss` files and whenever they change, re-create `scss.module` / `scss.json`. So that we
+don't have to do it manually. We can use [onchange](https://www.npmjs.com/package/onchange) for the
+watching and delegate back to `css:create-module`:
+
+```json
+  "css:create-module-when-styles-change":
+    "onchange 'src/**/*.scss' -v -- npm run css:create-module -- -o '{{changed}}.module' '{{changed}}'",
+```
+
+(The `{{changed}}` token is the path of the changed file, available courtecy of `onchange`.)
+
+#### `css:bundle`
+
+We've had this script all along, even before we introduced any of the modular CSS stuff. It'll always
+have to be run after a `css:create-module` to get the new styles into `bundle.css`.

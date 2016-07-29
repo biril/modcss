@@ -10,7 +10,9 @@
     "css:bundle": "node-sass --source-comments style/style.scss bundle.css",
     "css:bundle-when-styles-change": "onchange 'style/**/*.scss' 'src/**/*.scss' -v -- npm run css:bundle",
     "css:prefix": "postcss -u autoprefixer",
-    "css:create-module": "postcss -u autoprefixer -u postcss-modules"
+    "css:create-module": "postcss -u autoprefixer -u postcss-modules",
+    "css:create-modules": "find ./src -iname '*.scss' -exec npm run css:create-module -- -o '{}.module' '{}' \\;",
+    "css:create-module-when-styles-change": "onchange 'src/**/*.scss' -v -- npm run css:create-module -- -o '{{changed}}.module' '{{changed}}'"
   },
   "keywords": [
     "css",
