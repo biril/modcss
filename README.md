@@ -32,7 +32,6 @@ source to the state which is relevant to the stage.
     [onchange](https://www.npmjs.com/package/onchange). The latter module facilitates the use of
     glob patterns to watch file sets and run commands when anything is added, changed or deleted.)
 
-
 1: PostCSS - Does this thing even work?
 ---------------------------------------
 
@@ -146,4 +145,47 @@ watching and delegate back to `css:create-module`:
 #### `css:bundle`
 
 We've had this script all along, even before we introduced any of the modular CSS stuff. It'll always
-have to be run after a `css:create-module` to get the new styles into `bundle.css`.
+have to be run after a `css:create-module` to get the new styles into `bundle.css`. As was previously
+mentioned, the bundle script relies on the presence of a `styles/modules.scss` file which enumerates
+(`@import`s) each and every `scss.module` file in our project. This is obviously a maintenance
+hassle - idealy, we'd like to automate this as well. This brings us to
+
+
+4: More useful scripts
+----------------------
+
+#### `css:collect-modules`:
+
+Collect all `scss.module` files into the `styles/modules.scss` 'import-list'. This is yet another
+application of `find`:
+
+```json
+  "css:collect-modules":
+    "find ./src -iname '*.scss.module' -exec echo '@import \"{}\";' > ./style/modules.scss \\;"
+```
+
+#### `css:collect-modules-and-bundle` / `-when-module-changes`
+
+Collect all modules and then (re)create the CSS bundle. This is just a sequential combination of
+other scripts we've already put together. It's quite typical however so it's worth a dedicated
+script of its own. We'd also like to be able to run this automatically, watching the project's files
+and responding to any CSS module changing (or being added). This, again, can be done with `onchange`:
+
+```json
+  "css:collect-modules-and-bundle": "npm run css:collect-modules && npm run css:bundle",
+  "css:collect-modules-and-bundle-when-module-changes":
+    "onchange 'src/**/*.scss.module' -v -- npm run css:collect-modules-and-bundle"
+```
+
+#### `css:watch`
+
+This is our
+[finishing move](http://www.accelerator3359.com/Wrestling/pictures/finishers/hoganlegdrop.jpg). Watch
+the project's files and a) (re)create CSS modules when any style changes, b) (re)create entire CSS
+bundle when any module changes (or is added). We already have these scripts - we just combine them
+into the handy `css:watch` that we can run and forget:
+
+```json
+  "css:watch":
+    "npm run css:create-module-when-styles-change & npm run css:collect-modules-and-build-when-module-changes &"
+```
