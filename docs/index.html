@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <section>
+            <h3>All Machines Must Suffer</h3>
+            <img class="stretch" src="resources/images/allMachinesMustSuffer.png">
+            <small>
+              (Boston Dynamics shows off new robot dog,
+              <a href="https://en.wikipedia.org/wiki/Skynet_(Terminator)" target="_blank"> dooms us all</a>
+              by kicking it)
+            </small>
+          </section>
+          <section>
+            <img class="stretch" src="resources/images/allMachinesMustSuffer2.jpg">
+          </section>
+        </section>
+
+        <section>
+          <p><a href="https://www.youtube.com/watch?v=cGnlKFtAb64" target="_blank">
+            dotCSS 2015 - Andrey Sitnik - Fix Global CSS with PostCSS
+          </a></p>
+          <img class="stretch" src="resources/images/andreySitnikDotCss.jpg">
+        </section>
+
+        <section>
+          <section data-transition="none"><img class="stretch" src="resources/images/twitterUi.png"></section>
+          <section data-transition="none"><img class="stretch" src="resources/images/twitterUi+mods.png"></section>
+          <section data-transition="none"><img class="stretch" src="resources/images/twitterUi+mods2.png"></section>
+          <section data-transition="none"><img class="stretch" src="resources/images/twitterUi_modsOnly.png"></section>
+        </section>
+
+        <section><img class="stretch" src="resources/images/twitterUi_modsOnlyTree.png"></section>
+
+        <section>
+          <section><img class="stretch" src="resources/images/module.png"></section>
+          <section><img class="stretch" src="resources/images/module+.png"></section>
+        </section>
+
+        <section>
+          <p style="text-align:left;">With modular programming, concerns are separated such that
+            modules perform logically discrete functions, interacting through well-defined
+            interfaces.</p>
+          <p style="text-align:left;">&#x1f44d; Modular designed systems, if built correctly, are far
+            more reusable than a traditional monolithic design, since all (or many) of these modules
+            may then be reused.</p>
+          <p style="text-align:left;">&#x1f44d; A modularized software project will be more easily
+            assembled by large teams, since no team members are creating the whole system, or even
+            need to know about the system as a whole. They can focus just on the assigned smaller
+            task.</p>
+          <p style="text-align:right;">
+            <small> From <a href="https://en.wikipedia.org/wiki/Modular_programming" target="_blank">
+              Wikipedia's 'Modular programming'</a>
+            </small>
+          </p>
+        </section>
+
+        <section>
+          <section data-transition="none"><img class="stretch" src="resources/images/cssNonModular.png"></section>
+          <section data-transition="none"><img class="stretch" src="resources/images/cssBem.png"></section>
+        </section>
+
+        <section>
+          <section>
+            <h1>BEM
+              <img
+                style="vertical-align:text-bottom;margin: 0;border:0;background:none;box-shadow:none;"
+                src="resources/images/catCrying.png">
+            </h1>
+          </section>
+          <section>
+            <p>Because</p>
+            <pre><code class="html" data-trim contenteditable style="font-size: 18px;">
+<!-- 'UserFriend' UI element -->
+<div class="name">
+  <span class="firstName"><%- firstName %></span>
+  <span class="lastName"><%- lastName %></span>
+</div>
+<div class="friendshipIndicator">❤</div>
+            </code></pre>
+            <p>VS</p>
+            <pre><code class="html" data-trim contenteditable style="font-size: 18px;">
+<!-- 'UserFriend' UI element with unique-ified, BEM-ish class names -->
+<div class="userFriend_name">
+  <span class="userFriend_firstName"><%- firstName %></span>
+  <span class="userFriend_lastName"><%- lastName %></span>
+</div>
+<div class="userFiend_friendshipIndicator">❤</div>
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <p>But on the other hand</p>
+            <h1>BEM
+              <img
+                style="vertical-align:text-bottom;margin: 0;border:0;background:none;box-shadow:none;"
+                src="resources/images/catHappy.png">
+            </h1>
+            <p>because modules</p>
+          </section>
+        </section>
+
+        <section>
+          <section data-transition="none"><img class="stretch" src="resources/images/myUi.png"></section>
+          <section data-transition="none"><img class="stretch" src="resources/images/myUi+mods.png"></section>
+          <section data-transition="none"><img class="stretch" src="resources/images/myUi_modsOnly.png"></section>
+        </section>
+
+        <section>
+          <section data-transition="none"><img class="stretch" src="resources/images/myUi_modsOnlyTree.png"></section>
+          <section data-transition="none"><img class="stretch" src="resources/images/myUi_modsOnlyTree+projectStructure.png"></section>
+        </section>
+
+        <section><img class="stretch" src="resources/images/postCss.png"></section>
+
+        <section>
+          <h3>Thanks / Bye-bye &#x1f44b;</h3>
+          <img class="stretch" src="resources/images/allMachinesMustSuffer2.jpg">
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
+</html>
