@@ -39,10 +39,10 @@ source to the state which is relevant to the stage.
 Install [postcss](https://www.npmjs.com/package/postcss). Also install
 [postcss-cli](https://www.npmjs.com/package/postcss-cli), the command line for postcss.
 
-Let's create an experimental `css:prefix` task based on
+Let's create an experimental `css:prefix` script based on
 [autoprefixer](https://www.npmjs.com/package/autoprefixer) (yes, install that too). Take a
 look at [browserslist](https://github.com/ai/browserslist) for a way to configure autoprefixer
-(go ahead and add a browserslist file). Our task should look like:
+(go ahead and add a browserslist file). Our script should look like:
 
 ```json
 {
