@@ -75,10 +75,10 @@ in there. Try out our new script with
 generated `.scss.json`. Revel in its glory.
 
 We now have a method of uniquefying the class names per module without having to manually prefix
-them. Let's pick a module and remove all prefixes, applying our `create-module` task and making use
+them. Let's pick a module and remove all prefixes, applying our `create-module` script and making use
 of the generated JSON files to get the unique class names into our templates.
 
-We'll have to run `css:create-module` task with the `-o` switch to generate a `scss.module` file:
+We'll have to run `css:create-module` script with the `-o` switch to generate a `scss.module` file:
 
 ```bash
 npm run css:create-module -- -o ./src/views/.../foo.scss.module ./src/views/.../foo.scss
